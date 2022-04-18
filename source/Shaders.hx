@@ -13,7 +13,7 @@ typedef ShaderEffect = {
   var shader:Dynamic;
 }
 
-class BuildingEffect {
+class BuildingEffect extends Effect{
   public var shader:BuildingShader = new BuildingShader();
   public function new(){
     shader.data.alphaShit.value = [0];
@@ -31,7 +31,6 @@ class BuildingShader extends FlxShader
 {
   public function new(){
        super("
-    ////pragma header
     uniform float alphaShit;
     void main()
     {
@@ -49,7 +48,6 @@ class ChromaticAberrationShader extends FlxShader
 {
 	public function new(){
 		super('
-		////pragma header
 
 		uniform float rOffset;
 		uniform float gOffset;
@@ -141,7 +139,6 @@ class TiltshiftEffect extends Effect{
 class Tiltshift extends FlxShader
 {
 	public function new(){super('
-		////pragma header
 
 		// Modified version of a tilt shift shader from Martin Jonasson (http://grapefrukt.com/)
 		// Read http://notes.underscorediscovery.com/ for context on shaders and this file
@@ -234,7 +231,6 @@ class GreyscaleEffect extends Effect{
 }
 class GreyscaleShader extends FlxShader{
 	public function new(){super('
-	////pragma header
 	void main() {
 		vec4 color = texture2D(bitmap, openfl_TextureCoordv);
 		float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
@@ -282,7 +278,6 @@ class GrainEffect extends Effect {
 class Grain extends FlxShader
 {
 	public function new(){super('
-		////pragma header
 
 		/*
 		Film Grain post-process shader v1.1
@@ -483,7 +478,6 @@ class VCRDistortionShader extends FlxShader // https://www.shadertoy.com/view/ld
 {
 
   public function new(){super('
-    ////pragma header
 
     uniform float iTime;
     uniform bool vignetteOn;
@@ -625,7 +619,6 @@ class BloomShader extends FlxShader{
 	
 	public function new(){super('
 	
-	////pragma header
 	
 	uniform float intensity;
 	uniform float blurSize;
@@ -882,7 +875,6 @@ class InvertColorsEffect extends Effect
 class GlitchShader extends FlxShader
 {
     public function new(){super('
-    ////pragma header
     //uniform float tx, ty; // x,y waves phase
 
     //modified version of the wave shader to create weird garbled corruption like messes
@@ -926,7 +918,6 @@ class GlitchShader extends FlxShader
 class InvertShader extends FlxShader
 {
     public function new(){super('
-    ////pragma header
     
     vec4 sineWave(vec4 pt)
     {
@@ -948,7 +939,6 @@ class InvertShader extends FlxShader
 class DistortBGShader extends FlxShader
 {
     public function new(){super('
-    ////pragma header
     //uniform float tx, ty; // x,y waves phase
 
     //gives the character a glitchy, distorted outline
@@ -1000,7 +990,6 @@ class DistortBGShader extends FlxShader
 class PulseShader extends FlxShader
 {
     public function new(){super('
-    ////pragma header
     uniform float uampmul;
 
     //modified version of the wave shader to create weird garbled corruption like messes
