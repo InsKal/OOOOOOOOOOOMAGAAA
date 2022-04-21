@@ -308,9 +308,8 @@ class GreyscaleShader extends FlxShader{
 //fixed this shit 
 class GrainEffect extends Effect {
 	
-	public var shader:Grain;
+	public var shader: GrainShader = new GrainShader();
 	public function new (grainsize, lumamount,lockAlpha,coloramount){
-		shader = new Grain();
 		shader.data.lumamount.value = [lumamount];
 		shader.data.grainsize.value = [grainsize];
 		shader.data.lockAlpha.value = [lockAlpha]; 
