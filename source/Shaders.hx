@@ -44,21 +44,25 @@ class BuildingShader extends FlxShader
   //
 }
  
-//thx to tails gets trolled v3 team for making this //edited by jonnycat for it to work 
-class HighEffect {
+//thx to tails gets trolled v3 team for making this
+class HighEffect extends Effect {
   public var shader: HighShader = new HighShader();
-  public function new(effectiveness:Float){
-    shader.iTime.value = [0];
-    shader.data.effectiveness.value = [effectiveness];
+  public function new(effectiveness:Float){ 
+    shader.data.iTime.value = [0];
+    shader.data.effectiveness.value = [effectiveness]; 
+    PlayState.instance.shaderUpdates.push(update);
+  }
+  public function setHigh(motherfuckingcocksuckeranalcumfartshit:Float){
+    shader.data.effectiveness.value = [motherfuckingcocksuckeranalcumfartshit];
   } 
- public function update(elapsed:Float){
-    shader.iTime.value[0] += elapsed;
+  public function update(elapsed:Float){
+    shader.data.iTime.value[0] += elapsed;
   }
 }
 
 class HighShader extends FlxShader
 {
-public function new(){super('
+    public function new(){super('
     uniform float iTime;
     uniform float effectiveness;
     void main()
@@ -91,7 +95,7 @@ public function new(){super('
     }');
 	//
 	}
-} 
+}
 
 class ChromaticAberrationShader extends FlxShader
 {
