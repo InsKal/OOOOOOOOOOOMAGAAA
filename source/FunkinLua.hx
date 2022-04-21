@@ -1710,7 +1710,14 @@ Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 			
 			PlayState.instance.addShaderToCamera(camera, new InvertColorsEffect(lockAlpha));
 			
-		});
+		});  
+		//yay high effect		
+		Lua_helper.add_callback(lua, "addHighEffect", function(camera:String,iTime:Float,effectiveness:Float) {
+			
+			PlayState.instance.addShaderToCamera(camera, new HighEffect(iTime,effectiveness));
+			
+		}); 
+					
 		Lua_helper.add_callback(lua, "addGreyscaleEffect", function(camera:String) { //for dem funkies
 			
 			PlayState.instance.addShaderToCamera(camera, new GreyscaleEffect());
