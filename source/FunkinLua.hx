@@ -1711,12 +1711,12 @@ Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 			PlayState.instance.addShaderToCamera(camera, new InvertColorsEffect(lockAlpha));
 			
 		});  
-		//yay high effect		
-		Lua_helper.add_callback(lua, "addHighEffect", function(camera:String,effectiveness:Float) {
+		//yay high effect edit: i finally got this to work		
+		Lua_helper.add_callback(lua, "addHighEffect", function(camera:String,effectiveness:Float = 0.0) {
 			
 			PlayState.instance.addShaderToCamera(camera, new HighEffect(effectiveness));
 			
-		}); 
+		});
 					
 		Lua_helper.add_callback(lua, "addGreyscaleEffect", function(camera:String) { //for dem funkies
 			
