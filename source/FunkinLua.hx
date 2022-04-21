@@ -1712,9 +1712,9 @@ Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 			
 		});  
 		//yay high effect		
-		Lua_helper.add_callback(lua, "addHighEffect", function(camera:String,iTime:Float,effectiveness:Float) {
+		Lua_helper.add_callback(lua, "addHighEffect", function(camera:String,effectiveness:Float) {
 			
-			PlayState.instance.addShaderToCamera(camera, new HighEffect(iTime,effectiveness));
+			PlayState.instance.addShaderToCamera(camera, new HighEffect(effectiveness));
 			
 		}); 
 					
