@@ -47,7 +47,7 @@ class BuildingShader extends FlxShader
 //thx to tails gets trolled v3 team for making this //edited by jonnycat for it to work 
 class HighEffect {
   public var shader: HighShader = new HighShader();
-  public function new(iTime:Float,effectiveness:Float){
+  public function new(effectiveness:Float){
     shader.data.iTime.value = [iTime];
     shader.data.effectiveness.value = [effectiveness];
   }
