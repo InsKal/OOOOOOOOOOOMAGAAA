@@ -1,7 +1,9 @@
 package flixel.graphics.tile;
 
-import openfl.display.ShaderParameter;
-import sys.io.File;
+import openfl.display.ShaderParameter; 
+#if sys 
+import sys.io.File; 
+#end
 #if FLX_DRAW_QUADS
 import openfl.display.GraphicsShader;
 
