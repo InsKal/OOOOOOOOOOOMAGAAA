@@ -1,5 +1,5 @@
 package;
-
+#if SHADERS_ALLOWED
 import openfl.display.GraphicsShader;
 import flixel.FlxG;
 import flixel.graphics.tile.FlxGraphicsShader;
@@ -103,12 +103,12 @@ class DynamicShaderHandler
 		}
 	}
 
-	private function getTime()
+	function getTime()
 	{
 		return shader.data.iTime.value[0];
 	}
 
-	private function setTime(value)
+	function setTime(value)
 	{
 		shader.data.iTime.value = [value];
 	}
@@ -121,3 +121,4 @@ class DynamicShaderHandler
 		}
 	}
 }
+#end 
