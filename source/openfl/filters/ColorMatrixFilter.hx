@@ -1,5 +1,5 @@
 package openfl.filters;
-
+#if SHADERS_ALLOWED
 #if !flash
 import openfl.display.BitmapData;
 import openfl.display.DisplayObjectRenderer;
@@ -314,3 +314,4 @@ private class ColorMatrixShader extends BitmapFilterShader
 #else
 typedef ColorMatrixFilter = flash.filters.ColorMatrixFilter;
 #end
+#end 
