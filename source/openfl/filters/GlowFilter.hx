@@ -1,5 +1,5 @@
 package openfl.filters;
-
+#if SHADERS_ALLOWED
 #if !flash
 import openfl.display.BitmapData;
 import openfl.display.DisplayObjectRenderer;
@@ -9,7 +9,6 @@ import openfl.geom.Point;
 import openfl.geom.Rectangle;
 #if lime
 import lime._internal.graphics.ImageDataUtil; // TODO
-
 #end
 
 /**
@@ -735,3 +734,4 @@ private class InnerCombineKnockoutShader extends BitmapFilterShader
 #else
 typedef GlowFilter = flash.filters.GlowFilter;
 #end
+#end 
