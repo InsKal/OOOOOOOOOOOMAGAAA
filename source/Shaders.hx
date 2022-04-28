@@ -1,5 +1,5 @@
 package;
-
+#if SHADERS_ALLOWED
 // STOLEN FROM HAXEFLIXEL DEMO LOL
 import flixel.system.FlxAssets.FlxShader;
 import openfl.display.BitmapData;
@@ -1098,3 +1098,4 @@ class Effect {
 	}
 	
 }
+#end 
