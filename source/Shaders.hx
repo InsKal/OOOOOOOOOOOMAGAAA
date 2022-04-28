@@ -42,7 +42,26 @@ class BuildingShader extends FlxShader
   ");
     }
   //
-} 
+}   
+//idk if this will work 
+class BlammedEffect extends Effect 
+{ 
+public var shader:BlammedShader = new BlammedShader(); 
+
+    public function setColors(r:Int, g:Int, b:Int) {
+        this.r.value = [r / 255];
+        this.g.value = [g / 255];
+        this.b.value = [b / 255];
+    }   
+	
+    public function new(r:Float,g:Float,b:Float,enabled:Bool){ 
+    shader.data.r.value = [r];  
+    shader.data.g.value = [g]; 
+    shader.data.b.value = [b]; 
+    shader.data.enabled.value = [enabled];    
+    PlayState.instance.shaderUpdates.push(update);
+  }
+}
  // i will fix this and thank you yoshi engine of the shader code 
  class BlammedShader extends FlxShader {
     public function new(){super('
@@ -72,17 +91,6 @@ class BuildingShader extends FlxShader
         }');
 	//
 	}
-    public function new(r:Int, g:Int, b:Int) {
-        super();
-        setColors(r, g, b);
-        this.enabled.value = [true];
-    }
-
-    public function setColors(r:Int, g:Int, b:Int) {
-        this.r.value = [r / 255];
-        this.g.value = [g / 255];
-        this.b.value = [b / 255];
-    }
 } 
 
 //thx to tails gets trolled v3 team for making this
