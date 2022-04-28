@@ -1,5 +1,5 @@
 package openfl.filters;
-
+#if SHADERS_ALLOWED
 import haxe.Timer;
 #if !flash
 import openfl.display.BitmapData;
@@ -335,4 +335,5 @@ private class BlurShader extends BitmapFilterShader
 }
 #else
 typedef BlurFilter = flash.filters.BlurFilter;
-#end
+#end 
+#end 
