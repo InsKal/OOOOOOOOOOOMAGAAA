@@ -1,5 +1,5 @@
 package openfl.display;
-
+#if SHADERS_ALLOWED
 #if !flash
 import openfl.display._internal.ShaderBuffer;
 import openfl.display3D.Context3D;
@@ -948,4 +948,5 @@ class Shader
 }
 #else
 typedef Shader = flash.display.Shader;
-#end
+#end 
+#end 
