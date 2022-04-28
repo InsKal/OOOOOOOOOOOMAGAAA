@@ -1651,10 +1651,15 @@ class FunkinLua {
 			PlayState.instance.addShaderToCamera(camera, new VCRDistortionEffect(glitchFactor,distortion,perspectiveOn,vignetteMoving));
 			
 		});
+		//test		
+		 Lua_helper.add_callback(lua, "addBlammedEffect", function(camera:String,r:Float,g:Float,b:Float,enabled:Bool ) {
+			
+		        PlayState.instance.addShaderToCamera(camera, new BlammedEffect(r,g,b,enabled));
+			
+		}); 
+		//r:Float,g:Float,b:Float,enabled:Bool 
 		
-		
-
-Lua_helper.add_callback(lua, "createShaders", function(shaderName:String, ?optimize:Bool = false)
+Lua_helper.add_callback(lua, "createShaders", function(?shaderName:String, ?optimize:Bool = false)
 {
 	var shader = new DynamicShaderHandler(shaderName, optimize);
 
