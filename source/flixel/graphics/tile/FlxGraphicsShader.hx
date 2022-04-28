@@ -1,5 +1,5 @@
 package flixel.graphics.tile;
-
+#if SHADERS_ALLOWED
 import openfl.display.ShaderParameter; 
 #if sys 
 import sys.io.File; 
@@ -122,3 +122,4 @@ class FlxGraphicsShader extends GraphicsShader
 	}
 }
 #end
+#end 
