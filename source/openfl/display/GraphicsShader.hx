@@ -1,11 +1,7 @@
 package openfl.display;
-
+#if SHADERS_ALLOWED
 import openfl.utils.ByteArray;
 
-#if !openfl_debug
-@:fileXml('tags="haxe,release"')
-@:noDebug
-#end
 
 // Edited by gedehari
 class GraphicsShader extends Shader
@@ -134,3 +130,4 @@ class GraphicsShader extends Shader
 		}
 	}
 }
+#end 
