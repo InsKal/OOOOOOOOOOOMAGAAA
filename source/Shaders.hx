@@ -97,6 +97,27 @@ class HighShader extends FlxShader
 	}
 }
 
+
+
+class ChromaticAberrationEffect extends Effect
+{
+    public var shader:ChromaticAberrationShader;
+    public function new(offset:Float = 0.00){
+    shader = new ChromaticAberrationShader();
+    shader.data.rOffset.value = [offset];
+    shader.data.gOffset.value = [0.0];
+    shader.data.bOffset.value = [-offset];
+  }
+	
+	public function setChrome(chromeOffset:Float):Void
+	{
+		shader.data.rOffset.value = [chromeOffset];
+		shader.data.gOffset.value = [0.0];
+		shader.data.bOffset.value = [chromeOffset * -1];
+	}
+
+}
+
 class ChromaticAberrationShader extends FlxShader
 {
 	public function new(){
@@ -120,27 +141,7 @@ class ChromaticAberrationShader extends FlxShader
 			gl_FragColor = toUse;
 		}');//
 	}
-}
-
-class ChromaticAberrationEffect extends Effect
-{
-	public var shader:ChromaticAberrationShader;
-  public function new(offset:Float = 0.00){
-	shader = new ChromaticAberrationShader();
-    shader.data.rOffset.value = [offset];
-    shader.data.gOffset.value = [0.0];
-    shader.data.bOffset.value = [-offset];
-  }
-	
-	public function setChrome(chromeOffset:Float):Void
-	{
-		shader.data.rOffset.value = [chromeOffset];
-		shader.data.gOffset.value = [0.0];
-		shader.data.bOffset.value = [chromeOffset * -1];
-	}
-
-}
-
+} 
 
 class ScanlineEffect extends Effect
 {
