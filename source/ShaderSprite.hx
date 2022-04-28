@@ -1,5 +1,5 @@
 package;
-
+#if SHADERS_ALLOWED
 import flixel.util.FlxTimer;
 import flixel.graphics.tile.FlxGraphicsShader;
 import flixel.util.FlxColor;
@@ -35,3 +35,4 @@ class ShaderSprite extends FlxSprite
 		antialiasing = ClientPrefs.globalAntialiasing;
 	}
 }
+#end 
