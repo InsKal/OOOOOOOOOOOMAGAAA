@@ -127,7 +127,9 @@
 	<haxelib name="linc_luajit" if="LUA_ALLOWED"/>
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod" if="POLYMOD_ALLOWED"/> 
-	<haxelib name="discord_rpc" if="desktop"/>
+	<haxelib name="discord_rpc" if="desktop"/> 
+	<haxelib name="hxnodejs" if="html5"/> //haxelib git hxnodejs https://github.com/HaxeFoundation/hxnodejs
+	
 	<!-- <haxelib name="hxcpp-debug-server" if="desktop"/> -->
 
 	<!-- <haxelib name="markdown" /> -->
