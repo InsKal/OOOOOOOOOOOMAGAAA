@@ -23,7 +23,7 @@ class FlxGraphicsShader extends GraphicsShader
 		To avoid conflicts this constructor adds the flixel vars and uniforms to the sources, 
 		Add them yourself if you are going to use the super class directly.
 	 */
-	public function new(?fragSource:String = "", optimize:Bool = false,vertxSource:String = "")
+	public function new(?fragSource:String = "", optimize:Bool = false,?vertxSource:String = "")
 	{
 		super( // Vertex
 			"#pragma header
