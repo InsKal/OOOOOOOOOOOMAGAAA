@@ -3,7 +3,10 @@ package flixel.graphics.tile;
 import openfl.display.ShaderParameter; 
 #if sys 
 import sys.io.File; 
-#end
+#end 
+#if html5 
+import sys.io.File; 	
+#end	
 #if FLX_DRAW_QUADS
 import openfl.display.GraphicsShader;
 
