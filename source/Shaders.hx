@@ -769,7 +769,7 @@ __/________\__
 
 class GlitchEffect extends Effect
 {
-    public var shader:GlitchShader = new GlitchShader();
+    public var shader(default,null):GlitchShader = new GlitchShader();
 
     public var waveSpeed(default, set):Float = 0;
 	public var waveFrequency(default, set):Float = 0;
@@ -815,7 +815,7 @@ class GlitchEffect extends Effect
 
 class DistortBGEffect extends Effect
 {
-    public var shader:DistortBGShader = new DistortBGShader();
+    public var shader(default,null):DistortBGShader = new DistortBGShader();
 
     public var waveSpeed(default, set):Float = 0;
 	public var waveFrequency(default, set):Float = 0;
@@ -862,7 +862,7 @@ class DistortBGEffect extends Effect
 //gonna fix this 
 class PulseEffect extends Effect
 {
-    public var shader:PulseShader = new PulseShader();
+    public var shader(default,null):PulseShader = new PulseShader();
 
     public var waveSpeed(default, set):Float = 0;
 	public var waveFrequency(default, set):Float = 0;
@@ -919,7 +919,7 @@ class PulseEffect extends Effect
 
 class InvertColorsEffect extends Effect
 {
-    public var shader:InvertShader = new InvertShader();
+    public var shader(default,null):InvertShader = new InvertShader();
 	public function new(lockAlpha){
 	//	shader.data.lockAlpha.value = [lockAlpha];
 	}
