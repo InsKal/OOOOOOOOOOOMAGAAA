@@ -48,17 +48,48 @@ class RainEffect extends Effect
 {
   public var shader:RainShader = new RainShader();
   public function new(){
-    shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
-    shader.iTime.value = [0];
+    shader.data.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
+    shader.data.iTime.value = [0];
     var noise = Assets.getBitmapData(Paths.image("noise"));
-    shader.iChannel0.input = noise;
-    shader.iChannel0.wrap = REPEAT;
+    shader.data.iChannel0.input = noise;
+    shader.data.iChannel0.wrap = REPEAT;
   }
   public function update(elapsed:Float){
-    shader.iTime.value[0] += elapsed;
-    shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
+    shader.data.iTime.value[0] += elapsed;
+    shader.data.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
   }
-} 
+}  
+
+class RainShader extends FlxShader // https://www.shadertoy.com/view/WldGRl
+{
+  @:glFragmentSource('
+    #pragma header
+    uniform vec2 iResolution;
+    uniform sampler2D iChannel0;
+    uniform float iTime;
+
+
+    void main()
+    {
+      vec2 uv = openfl_TextureCoordv;
+
+      vec2 ruv = uv / vec2(iResolution.x/iResolution.y,1.0);
+
+      uv = (ruv * 1.5 - 1.0) *  vec2(iResolution.x/iResolution.y,1.0);
+      vec2 st =  -uv * vec2(1.0+(ruv.y+1.0)*0.5, .04)+vec2(iTime*.2-ruv.y*.1, iTime*.2);
+      float f = flixel_texture2D(iChannel0, st).y * flixel_texture2D(iChannel0, st*.773).x * 1.55;
+      f = clamp(pow(abs(f), 12.0) * 3.0, 0.0, (ruv.y+.4)*.14);
+      vec3 col;
+      col += vec3(f,f,f)*2.;
+
+      gl_FragColor = flixel_texture2D(bitmap,openfl_TextureCoordv)+vec4(col,1.0);
+    }
+  ')
+
+  public function new(){
+    super();
+  }
+}
 
 //thx mag engine for da shader!!!
 class Hq2xEffect extends Effect{
