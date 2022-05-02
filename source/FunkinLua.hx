@@ -1623,7 +1623,16 @@ class FunkinLua {
 		
 		
 		//SHADER SHIT
-		
+		Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
+			
+		}); 
+		Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
+			
+		});
 		Lua_helper.add_callback(lua, "addChromaticAbberationEffect", function(camera:String,chromeOffset:Float = 0.005) {
 			
 			PlayState.instance.addShaderToCamera(camera, new ChromaticAberrationEffect(chromeOffset));
