@@ -74,7 +74,7 @@ class RainEffect extends Effect
     shader.data.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
   }
 }  
-
+// i will fix this later
 class RainShader extends FlxShader // https://www.shadertoy.com/view/WldGRl
 {
   
