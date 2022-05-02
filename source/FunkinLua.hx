@@ -1638,12 +1638,16 @@ class FunkinLua {
 			PlayState.instance.addShaderToCamera(camera, new ChromaticAberrationEffect(chromeOffset));
 			
 		});
-		
 		Lua_helper.add_callback(lua, "addScanlineEffect", function(camera:String,lockAlpha:Bool=false) {
 			
 			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect(lockAlpha));
 			
-		}); 
+		});  
+		Lua_helper.add_callback(lua, "addRainEffect", function(camera:String) {
+			
+			PlayState.instance.addShaderToCamera(camera, new RainEffect());
+			
+		});
 		//fixed this grain shit 
 		Lua_helper.add_callback(lua, "addGrainEffect", function(camera:String,grainSize:Float=1.6,lumAmount:Float=1.0,coloramount:Float=0.6,lockAlpha:Bool=false) {
 			
