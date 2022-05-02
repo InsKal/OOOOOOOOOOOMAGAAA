@@ -42,7 +42,22 @@ class BuildingShader extends FlxShader
   ");
     }
   //
-}     
+}      
+
+
+ /* public function new(){
+       super("
+    uniform float alphaShit;
+    void main()
+    {
+      vec4 color = flixel_texture2D(bitmap,openfl_TextureCoordv);
+      if (color.a > 0.0)
+        color-=alphaShit;
+      gl_FragColor = color;
+    }
+  ");
+    }*/
+
 //thx vs omega for da shader
 class RainEffect extends Effect
 {
@@ -62,8 +77,9 @@ class RainEffect extends Effect
 
 class RainShader extends FlxShader // https://www.shadertoy.com/view/WldGRl
 {
-  @:glFragmentSource('
-    #pragma header
+  
+public function new(){
+       super("
     uniform vec2 iResolution;
     uniform sampler2D iChannel0;
     uniform float iTime;
@@ -84,11 +100,9 @@ class RainShader extends FlxShader // https://www.shadertoy.com/view/WldGRl
 
       gl_FragColor = flixel_texture2D(bitmap,openfl_TextureCoordv)+vec4(col,1.0);
     }
-  ')
-
-  public function new(){
-    super();
-  }
+  ");
+    }
+ 
 }
 
 //thx mag engine for da shader!!!
