@@ -42,7 +42,24 @@ class BuildingShader extends FlxShader
   ");
     }
   //
-}    
+}     
+//thx vs omega for da shader
+class RainEffect extends Effect
+{
+  public var shader:RainShader = new RainShader();
+  public function new(){
+    shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
+    shader.iTime.value = [0];
+    var noise = Assets.getBitmapData(Paths.image("noise"));
+    shader.iChannel0.input = noise;
+    shader.iChannel0.wrap = REPEAT;
+  }
+  public function update(elapsed:Float){
+    shader.iTime.value[0] += elapsed;
+    shader.iResolution.value = [Lib.current.stage.stageWidth,Lib.current.stage.stageHeight];
+  }
+} 
+
 //thx mag engine for da shader!!!
 class Hq2xEffect extends Effect{
 	
