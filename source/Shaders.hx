@@ -14,7 +14,7 @@ typedef ShaderEffect = {
 }
 
 class BuildingEffect extends Effect{
-  public var shader:BuildingShader = new BuildingShader();
+  public var shader(default,null):BuildingShader = new BuildingShader();
   public function new(){
     shader.data.alphaShit.value = [0];
   }
@@ -46,10 +46,38 @@ class BuildingShader extends FlxShader
 
 
 
-//thx mag engine for da shader!!!
+//Mag engine Shaders!!!  
+class ScanlineEffect2 extends Effect{
+	public var shader(default,null):ScanlineShader2 = new ScanlineShader2();
+	
+	public function new(scale:Float){
+		shader.data.scale.value = [scale]; 
+	}
+	public function setScale(ugh:Float){
+    shader.data.scale.value = [ugh];
+  } 
+}  
+
+class ScanlineShader2 extends FlxShader
+{
+  public function new(){
+    super("
+    uniform float scale;
+
+    void main()
+    {
+      if (mod(floor(openfl_TextureCoordv.y * openfl_TextureSize.y / scale), 2.0) == 0.0)
+        gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+      else
+        gl_FragColor = texture2D(bitmap, openfl_TextureCoordv);
+    }
+");
+ }
+} 
+
 class Hq2xEffect extends Effect{
 	
-	public var shader:Hq2xShader = new Hq2xShader();
+	public var shader(default,null):Hq2xShader = new Hq2xShader();
 	
 	public function new(){
 		
@@ -88,7 +116,7 @@ class Hq2xShader extends FlxShader
 
 //thx to tails gets trolled v3 team for making this
 class HighEffect extends Effect {
-  public var shader: HighShader = new HighShader();
+  public var shader(default,null):HighShader = new HighShader();
   public function new(effectiveness:Float){ 
     shader.data.iTime.value = [0];
     shader.data.effectiveness.value = [effectiveness]; 
@@ -143,7 +171,7 @@ class HighShader extends FlxShader
 
 class ChromaticAberrationEffect extends Effect
 {
-    public var shader:ChromaticAberrationShader;
+    public var shader(default,null):ChromaticAberrationShader;
     public function new(offset:Float = 0.00){
     shader = new ChromaticAberrationShader();
     shader.data.rOffset.value = [offset];
@@ -188,7 +216,7 @@ class ChromaticAberrationShader extends FlxShader
 class ScanlineEffect extends Effect
 {
 	
-	public var shader:Scanline;
+	public var shader(default,null):Scanline;
 	public function new (lockAlpha){
 		shader = new Scanline();
 		shader.data.lockAlpha.value = [lockAlpha];
@@ -222,7 +250,7 @@ class Scanline extends FlxShader
 
 class TiltshiftEffect extends Effect{
 	
-	public var shader:Tiltshift;
+	public var shader(default,null):Tiltshift;
 	public function new (blurAmount:Float, center:Float){
 		shader = new Tiltshift();
 		shader.data.bluramount.value = [blurAmount];
@@ -317,7 +345,7 @@ class Tiltshift extends FlxShader
 }
 class GreyscaleEffect extends Effect{
 	
-	public var shader:GreyscaleShader = new GreyscaleShader();
+	public var shader(default,null):GreyscaleShader = new GreyscaleShader();
 	
 	public function new(){
 		
@@ -351,7 +379,7 @@ class GreyscaleShader extends FlxShader{
 //fixed this shit 
 class GrainEffect extends Effect {
 	
-        public var shader:Grain;
+        public var shader(default,null):Grain;
 	public function new (grainsize, lumamount,lockAlpha,coloramount){ 
 		shader = new Grain();
 		shader.data.lumamount.value = [lumamount];
@@ -525,7 +553,7 @@ class Grain extends FlxShader
 
 class VCRDistortionEffect extends Effect
 {
-  public var shader:VCRDistortionShader = new VCRDistortionShader();
+  public var shader(default,null):VCRDistortionShader = new VCRDistortionShader();
   public function new(glitchFactor:Float,distortion:Bool=true,perspectiveOn:Bool=true,vignetteMoving:Bool=true){
     shader.data.iTime.value = [0];
     shader.data.vignetteOn.value = [true];
@@ -699,7 +727,7 @@ class VCRDistortionShader extends FlxShader // https://www.shadertoy.com/view/ld
 
 class BloomEffect extends Effect{
 	
-	public var shader:BloomShader = new BloomShader();
+	public var shader(default,null):BloomShader = new BloomShader();
 	public function new(blurSize:Float, intensity:Float){
 		shader.data.blurSize.value = [blurSize];
 		shader.data.intensity.value = [intensity];
