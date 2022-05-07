@@ -1620,46 +1620,6 @@ class FunkinLua {
 			luaTrace('musicFadeOut is deprecated! Use soundFadeOut instead.', false, true);
 		});
 		
-		
-		
-		//SHADER SHIT
-		Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
-			
-			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
-			
-		}); 
-		Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
-			
-			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
-			
-		});
-		Lua_helper.add_callback(lua, "addChromaticAbberationEffect", function(camera:String,chromeOffset:Float = 0.005) {
-			
-			PlayState.instance.addShaderToCamera(camera, new ChromaticAberrationEffect(chromeOffset));
-			
-		});
-		Lua_helper.add_callback(lua, "addScanlineEffect", function(camera:String,lockAlpha:Bool=false) {
-			
-			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect(lockAlpha));
-			
-		});  
-		//fixed this grain shit 
-		Lua_helper.add_callback(lua, "addGrainEffect", function(camera:String,grainSize:Float=1.6,lumAmount:Float=1.0,coloramount:Float=0.6,lockAlpha:Bool=false) {
-			
-			PlayState.instance.addShaderToCamera(camera, new GrainEffect(grainSize,lumAmount,lockAlpha,coloramount));
-			
-		});
-		Lua_helper.add_callback(lua, "addTiltshiftEffect", function(camera:String,blurAmount:Float=1.0,center:Float=1.0) {
-			
-			PlayState.instance.addShaderToCamera(camera, new TiltshiftEffect(blurAmount,center));
-			
-		});
-		Lua_helper.add_callback(lua, "addVCREffect", function(camera:String,glitchFactor:Float = 0.0,distortion:Bool=true,perspectiveOn:Bool=true,vignetteMoving:Bool=true) {
-			
-			PlayState.instance.addShaderToCamera(camera, new VCRDistortionEffect(glitchFactor,distortion,perspectiveOn,vignetteMoving));
-			
-		});
-		
 Lua_helper.add_callback(lua, "createShaders", function(?shaderName:String, ?optimize:Bool = false)
 {
 	var shader = new DynamicShaderHandler(shaderName, optimize);
@@ -1695,8 +1655,49 @@ Lua_helper.add_callback(lua, "setShadersToCamera", function(shaderName:Array<Str
 Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 {
 	cameraFromString(cameraName).setFilters([]);
-});	
-		
+});	           
+		 //SHADER SHIT 			
+		 Lua_helper.add_callback(lua, "addScanlineEffect2", function(camera:String,scale:Float = 1.0) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect2(scale));
+			
+		});
+		 Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
+			
+		}); 
+		Lua_helper.add_callback(lua, "addHq2xEffect", function(camera:String) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new Hq2xEffect());
+			
+		});
+		Lua_helper.add_callback(lua, "addChromaticAbberationEffect", function(camera:String,chromeOffset:Float = 0.005) {
+			
+			PlayState.instance.addShaderToCamera(camera, new ChromaticAberrationEffect(chromeOffset));
+			
+		});
+		Lua_helper.add_callback(lua, "addScanlineEffect", function(camera:String,lockAlpha:Bool=false) {
+			
+			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect(lockAlpha));
+			
+		});  
+		//fixed this grain shit 
+		Lua_helper.add_callback(lua, "addGrainEffect", function(camera:String,grainSize:Float=1.6,lumAmount:Float=1.0,coloramount:Float=0.6,lockAlpha:Bool=false) {
+			
+			PlayState.instance.addShaderToCamera(camera, new GrainEffect(grainSize,lumAmount,lockAlpha,coloramount));
+			
+		});
+		Lua_helper.add_callback(lua, "addTiltshiftEffect", function(camera:String,blurAmount:Float=1.0,center:Float=1.0) {
+			
+			PlayState.instance.addShaderToCamera(camera, new TiltshiftEffect(blurAmount,center));
+			
+		});
+		Lua_helper.add_callback(lua, "addVCREffect", function(camera:String,glitchFactor:Float = 0.0,distortion:Bool=true,perspectiveOn:Bool=true,vignetteMoving:Bool=true) {
+			
+			PlayState.instance.addShaderToCamera(camera, new VCRDistortionEffect(glitchFactor,distortion,perspectiveOn,vignetteMoving));
+			
+		});
 		Lua_helper.add_callback(lua, "addGlitchEffect", function(camera:String,waveSpeed:Float = 0.1,waveFrq:Float = 0.1,waveAmp:Float = 0.1) {
 			
 			PlayState.instance.addShaderToCamera(camera, new GlitchEffect(waveSpeed,waveFrq,waveAmp));
