@@ -58,10 +58,10 @@ class GlitchEffect2 extends Effect
 
     public function new(iMouseX:Float,NUM_SAMPLES:Int,glitchMultiply:Float):Void
 	{
-        shader.iMouseX.value = [iMouseX];
-	shader.uTime.value = [0];
-        shader.NUM_SAMPLES.value = [NUM_SAMPLES];
-        shader.glitchMultiply.value = [glitchMultiply];
+        shader.data.iMouseX.value = [iMouseX];
+	shader.data.uTime.value = [0];
+        shader.data.NUM_SAMPLES.value = [NUM_SAMPLES];
+        shader.data.glitchMultiply.value = [glitchMultiply];
 	}
 
     // update this manually
@@ -223,9 +223,9 @@ class VhsHandlerEffect extends Effect
 	{
 	//super();
         shader = new VhsHandlerShader();
-    	shader.iTime.value = [0.0];
-	shader.noisePercent.value = [noisePercent];
-        shader.intensity.value = [intensity];
+    	shader.data.iTime.value = [0.0];
+	shader.data.noisePercent.value = [noisePercent];
+        shader.data.intensity.value = [intensity];
 	}
 
 	public function update(elapsed:Float)
