@@ -43,25 +43,25 @@ class BuildingShader extends FlxShader
     }
   //
 }      
-//zacks code https://github.com/zacksgamerz/Zacks-code-archive
+//zacks shader code https://github.com/zacksgamerz/Zacks-code-archive
 
 // Shader in question: https://www.shadertoy.com/view/ldjGzV
 // Original haxefl code: https://github.com/jobf/haxeflixel-vcr-effect-shader/blob/master/source/VhsShader.hx
 // Modified by zackdroid so it can be much easier to handle.
 
-class VhsHandler
+class VhsHandlerEffect extends Effect
 {
-    public var shader:VhsShader;
+    public var shader(default,null):VhsShader;
     public var noise(default, set):Float = 0.0;
     public var intensity(default,set):Float = 0.2;
 
 	public function new(noisePercent:Float,intensity:Float)
 	{
-		//super();
+	//super();
         shader = new VhsShader();
     	shader.iTime.value = [0.0];
-	    shader.noisePercent.value = [noisePercent];
-        shader.intensity.value = [0.2];
+	shader.noisePercent.value = [noisePercent];
+        shader.intensity.value = [intensity];
 	}
 
 	public function update(elapsed:Float)
@@ -81,10 +81,9 @@ class VhsHandler
 	}
 }
 
-class VhsShader extends FlxShader {
-    @:glFragmentSource('
-    #pragma header
-    
+class VhsHandlerShader extends FlxShader {
+   public function new(){
+    super("
     uniform float iTime;
     uniform sampler2D noiseTexture;
     uniform float noisePercent;
@@ -159,12 +158,11 @@ class VhsShader extends FlxShader {
         
         gl_FragColor = vec4(video.rgb,daAlp);
     }
-    ')
-    public function new() {
-        super();
-    }
+");
+ }
 }
-
+ 
+ 
 //Mag engine Shaders!!!  
 class ScanlineEffect2 extends Effect{
 	public var shader(default,null):ScanlineShader2 = new ScanlineShader2();
