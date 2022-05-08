@@ -51,14 +51,14 @@ class BuildingShader extends FlxShader
 
 class VhsHandlerEffect extends Effect
 {
-    public var shader(default,null):VhsShader;
+    public var shader(default,null):VhsHandlerShader;
     public var noise(default, set):Float = 0.0;
     public var intensity(default,set):Float = 0.2;
 
 	public function new(noisePercent:Float,intensity:Float)
 	{
 	//super();
-        shader = new VhsShader();
+        shader = new VhsHandlerShader();
     	shader.iTime.value = [0.0];
 	shader.noisePercent.value = [noisePercent];
         shader.intensity.value = [intensity];
