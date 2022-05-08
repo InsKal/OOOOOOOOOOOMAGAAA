@@ -1655,8 +1655,13 @@ Lua_helper.add_callback(lua, "setShadersToCamera", function(shaderName:Array<Str
 Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 {
 	cameraFromString(cameraName).setFilters([]);
-});	           
-		 //SHADER SHIT 			
+});	          
+		 //SHADER SHIT 	 			
+		 Lua_helper.add_callback(lua, "addVhsHandlerEffect", function(camera:String,noisePercent:Float=0.0,intensity:Float=0.2) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new VhsHandlerEffect(noisePercent,intensity));
+			
+		 });
 		 Lua_helper.add_callback(lua, "addScanlineEffect2", function(camera:String,scale:Float = 1.0) { //for dem funkies
 			
 			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect2(scale));
