@@ -56,7 +56,7 @@ class GlitchEffect extends Effect
     // offset of the effect, updated along with iTime.
     public var iMouse(default, set):Float = 779;
 
-    public function new():Void
+    public function new(iMouseX:Float,NUM_SAMPLES:Int,glitchMultiply:Float):Void
 	{
         shader.iMouseX.value = [iMouseX];
 	shader.uTime.value = [0];
