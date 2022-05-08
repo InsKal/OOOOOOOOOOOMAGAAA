@@ -69,31 +69,30 @@ class GlitchEffect extends Effect
 	{
         //shader.iMouseX.value[0] = FlxG.mouse.x;
         shader.iMouseX.value[0] = iMouse; //much better if self adjusted.
-		shader.uTime.value[0] += elapsed;
+	shader.uTime.value[0] += elapsed;
 	}
 
 	function set_NUM_SAMPLES(value:Int):Int {
-		NUM_SAMPLES = value;
+	NUM_SAMPLES = value;
         shader.NUM_SAMPLES.value[0] = value;
         return value;
 	}
 
 	function set_glitchMultiply(value:Float):Float {
-		glitchMultiply = value;
+	glitchMultiply = value;
         shader.glitchMultiply.value[0] = value;
         return value;
 	}
 
     function set_iMouse(value:Float):Float {
-		iMouse = value;
+	iMouse = value;
         return value;
 	}
 }
 
 class GlitchShader extends FlxShader {
-    @:glFragmentSource('
-    #pragma header
-
+    public function new(){
+    super("
     uniform float uTime;
     uniform float iMouseX;
     uniform int NUM_SAMPLES;
@@ -206,11 +205,9 @@ class GlitchShader extends FlxShader {
         
         gl_FragColor.a = sum.a;
         gl_FragColor.rgb = sum.rgb; // * outcol0.a;
-    }')
-
-    public function new() {
-        super();
     }
+");
+ }
 }
 // Shader in question: https://www.shadertoy.com/view/ldjGzV
 // Original haxefl code: https://github.com/jobf/haxeflixel-vcr-effect-shader/blob/master/source/VhsShader.hx
