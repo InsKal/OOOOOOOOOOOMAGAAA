@@ -1656,7 +1656,12 @@ Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 {
 	cameraFromString(cameraName).setFilters([]);
 });	          
-		 //SHADER SHIT 	 			
+		 //SHADER SHIT 	 
+		Lua_helper.add_callback(lua, "addGlitchEffect", function(camera:String,NUM_SAMPLES:Int=10,glitchMultiply:Float=1,iMouseX:Float=779) { //good shit
+			
+			PlayState.instance.addShaderToCamera(camera, new GlitchEffect(NUM_SAMPLES,glitchMultiply,iMouseX));
+			
+		 });
 		 Lua_helper.add_callback(lua, "addVhsHandlerEffect", function(camera:String,noisePercent:Float=0.0,intensity:Float=0.2) { //for dem funkies
 			
 			PlayState.instance.addShaderToCamera(camera, new VhsHandlerEffect(noisePercent,intensity));
