@@ -44,9 +44,9 @@ class BuildingShader extends FlxShader
   //
 }      
 //zacks shader code https://github.com/zacksgamerz/Zacks-code-archive
-class GlitchEffect extends Effect
+class GlitchEffect2 extends Effect
 {
-    public var shader(default, null):GlitchShader = new GlitchShader();
+    public var shader(default, null):GlitchShader2 = new GlitchShader2();
     //public var intensity(default, set):Int = 10;
 
     // increass if u want more gitches squares, or decrease (min is 3)
@@ -90,7 +90,7 @@ class GlitchEffect extends Effect
 	}
 }
 
-class GlitchShader extends FlxShader {
+class GlitchShader2 extends FlxShader {
     public function new(){
     super("
     uniform float uTime;
