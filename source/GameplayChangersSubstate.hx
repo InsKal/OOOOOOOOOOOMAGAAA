@@ -1,6 +1,6 @@
 package;
 
-#if desktop
+#if DISCORD_RPC_ALLOWED
 import Discord.DiscordClient;
 #end
 import flash.text.TextField;
