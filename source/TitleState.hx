@@ -1,8 +1,7 @@
 package;
 
-#if desktop
+#if DISCORD_RPC_ALLOWED 
 import Discord.DiscordClient;
-import sys.thread.Thread;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -17,7 +16,8 @@ import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 #if MODS_ALLOWED
 import sys.FileSystem;
-import sys.io.File;
+import sys.io.File; 
+import sys.thread.Thread;
 #end
 import options.GraphicsSettingsSubState;
 //import flixel.graphics.FlxGraphic;
@@ -187,7 +187,7 @@ class TitleState extends MusicBeatState
 			FlxTransitionableState.skipNextTransOut = true;
 			MusicBeatState.switchState(new FlashingState());
 		} else {
-			#if desktop
+			#if DISCORD_RPC_ALLOWED 
 			DiscordClient.initialize();
 			Application.current.onExit.add (function (exitCode) {
 				DiscordClient.shutdown();
