@@ -11,8 +11,13 @@ import openfl.Lib;
 using StringTools;
 typedef ShaderEffect = {
   var shader:Dynamic;
-}
-
+} 
+	
+#if !openfl_debug
+@:fileXml('tags="haxe,release"')
+@:Debug
+#end
+	
 class BuildingEffect extends Effect{
   public var shader(default,null):BuildingShader = new BuildingShader();
   public function new(){
