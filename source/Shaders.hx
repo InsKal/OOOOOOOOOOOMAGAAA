@@ -43,12 +43,12 @@ class BuildingShader extends FlxShader
     }
   //
 }      
-
-class SurfEffect 
+// good shader code  https://www.shadertoy.com/view/4dSXRR
+class SurfEffect extends Effect 
 { 
 public var shader(default, null):SurfShader = new SurfShader(); 
 
-public function new()
+public function new(amplitude:Float)
 {  
   shader.data.iTime.value = [0];
   shader.data.amplitude.value = [amplitude]; 
