@@ -13,11 +13,6 @@ typedef ShaderEffect = {
   var shader:Dynamic;
 } 
 	
-#if !openfl_debug
-@:fileXml('tags="haxe,release"')
-@:Debug
-#end
-	
 class BuildingEffect extends Effect{
   public var shader(default,null):BuildingShader = new BuildingShader();
   public function new(){
@@ -48,6 +43,48 @@ class BuildingShader extends FlxShader
     }
   //
 }      
+
+class SurfEffect 
+{ 
+public var shader(default, null):SurfShader = new SurfShader(); 
+
+public function new()
+{  
+  shader.data.iTime.value = [0];
+  shader.data.amplitude.value = [amplitude]; 
+} 
+
+public function update(elapsed:Float){
+    shader.data.iTime.value[0] += elapsed;
+}  
+public function setamplitude(goofy:Float){
+  shader.data.amplitude.value = [goofy];
+} 
+}
+class SurfShader extends FlxShader
+{ 
+public function new(){
+    super("
+  uniform float iTime; 
+  unifrom float amplitude;
+  void main()
+{
+    vec2 texCoord = openfl_TextureCoordv;
+    
+    vec2 pulse = sin(iTime + texCoord); 
+
+    float dist = 2.0 * length(texCoord.y - 0.5);
+    
+    vec2 newCoord = texCoord + amplitude * vec2(0.0, pulse.x); // y-axis only; 
+    
+    vec2 interpCoord = mix(newCoord, texCoord, dist);
+	
+    gl_fragColor = flixel_texture2D(bitmap, interpCoord);
+}
+");
+ }
+}  
+
 //Mag engine Shaders!!!  
 class ScanlineEffect2 extends Effect{
 	public var shader(default,null):ScanlineShader2 = new ScanlineShader2();
