@@ -1657,6 +1657,11 @@ Lua_helper.add_callback(lua, "clearShadersFromCamera", function(cameraName)
 	cameraFromString(cameraName).setFilters([]);
 });	          
 		 //SHADER SHIT 	 
+		 Lua_helper.add_callback(lua, "addSurfEffect", function(camera:String,amplitude:Float = 0.10) { //for dem funkies
+			
+			PlayState.instance.addShaderToCamera(camera, new SurfEffect(amplitude));
+			
+		});
 		 Lua_helper.add_callback(lua, "addScanlineEffect2", function(camera:String,scale:Float = 1.0) { //for dem funkies
 			
 			PlayState.instance.addShaderToCamera(camera, new ScanlineEffect2(scale));
