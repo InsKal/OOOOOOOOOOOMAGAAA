@@ -973,10 +973,10 @@ class PulseEffect extends Effect
 {
     public var shader(default,null):PulseShader = new PulseShader();
 
-    public var waveSpeed(default, set):Float = 0;
-	public var waveFrequency(default, set):Float = 0;
-	public var waveAmplitude(default, set):Float = 0;
-    public var Enabled(default, set):Bool = false;
+    public var waveSpeed(default, set):Float;
+	public var waveFrequency(default, set):Float;
+	public var waveAmplitude(default, set):Float;
+        public var Enabled(default, set);
 
 	public function new(waveSpeed:Float,waveFrequency:Float,waveAmplitude:Float):Void
 	{
